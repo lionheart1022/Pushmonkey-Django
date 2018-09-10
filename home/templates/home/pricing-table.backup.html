@@ -1,0 +1,159 @@
+{# The pricing table contains one row. Should be included inside a .container #}
+
+<div class="row price-table">
+	<div class="{% if modal_pricing_table %}col-lg-3{% elif overview_pricing_tabel %}col-lg-4{% else %}col-lg-2 col-lg-offset-2{% endif %} col-xs-6">
+		<div class="price-col second-tier">
+			<h4>Starter</h4>
+			<div class="price-row-light">Unlimited Subscribers</div>
+			<div class="price-row">10k Notifications</div>
+			<div class="price-row-light">Statistics</div>
+			<div class="price-row">Granular Filtering</div>
+			<div class="price-row-light">Custom Branded</div>
+			<div class="price-row last-row">CTA Banners</div>
+			<div class="button-row centered">
+				{% if modal_pricing_table or overview_pricing_tabel %}
+				<a href="{% url 'payment_overview' 'yearly' plans.STARTER %}" 
+				{% else %}
+				<a href="{% url 'register_preselected_plan' plans.starter_yearly %}" 
+				{% endif %}
+					class="btn {% if is_cool_update %}btn-cool-update{% else %}btn-success{% endif %} btn-lg btn-block">
+					<span class="currency">$</span>{{ prices.starter_monthly_paid_yearly }}/month
+					<br /> 
+					paid yearly
+				</a>
+			</div>
+		</div>
+		<div class="or-row">
+			<div class="top"></div>
+			<div class="or-circle">or</div>
+		</div>
+		<div class="second-tier price-yearly">
+			<div class="button-row centered">
+				{% if modal_pricing_table or overview_pricing_tabel %}
+				<a href="{% url 'payment_overview' 'monthly' plans.STARTER %}" 
+					{% else %}
+				<a href="{% url 'register_preselected_plan' plans.starter_monthly %}" 
+					{% endif %}
+					class="btn {% if is_cool_update %}btn-cool-update{% else %}btn-success{% endif %} btn-lg btn-block">
+					<span class="currency">$</span>{{ prices.STARTER_MONTHLY }}/month
+					<br /> 
+					paid monthly
+				</a>
+			</div>
+		</div>
+		{% if is_cool_update %}
+		<a href="http://blog.getpushmonkey.com/2015/01/push-buck-cool-update-sale/?source=pricing-table" target="_blank" class="cool_update_sale_link">
+			<div class="cool_update_sale text-center">
+				<strong>COOL UPDATE <span>sale</span></strong>
+			</div>
+		</a>
+		{% endif %}
+	</div><!--/Starter -->
+
+	<div class="{% if modal_pricing_table %}col-lg-3{% elif overview_pricing_tabel %}col-lg-4{% else %}col-lg-2{% endif %} col-xs-6">
+		<div class="price-col first-tier">
+			<h4>Sweet Spot</h4>
+			<div class="price-row-light">Unlimited Subscribers</div>
+			<div class="price-row">500k Notifications</div>
+			<div class="price-row-light">Statistics</div>
+			<div class="price-row">Granular Filtering</div>
+			<div class="price-row-light">Custom Branded</div>
+			<div class="price-row">CTA Banners</div>
+			<div class="price-row-light last-row">Data Export</div>
+			<div class="button-row centered">
+				{% if modal_pricing_table or overview_pricing_tabel %}
+				<a href="{% url 'payment_overview' 'yearly' plans.SWEET_SPOT %}" 
+					{% else %}
+				<a href="{% url 'register_preselected_plan' plans.sweet_spot_yearly %}" 
+					{% endif %}
+					class="btn btn-success btn-lg btn-block">
+					<span class="currency">$</span>{{ prices.sweet_spot_monthly_paid_yearly }}/month
+					<br /> 
+					paid yearly
+				</a>
+			</div>
+		</div>
+		<div class="or-row first-tier-or">
+			<div class="top"></div>
+			<div class="or-circle">or</div>
+		</div>
+		<div class="first-tier price-yearly">
+			<div class="button-row centered">
+				{% if modal_pricing_table or overview_pricing_tabel %}
+				<a href="{% url 'payment_overview' 'monthly' plans.SWEET_SPOT %}" 
+					{% else %}
+				<a href="{% url 'register_preselected_plan' plans.sweet_spot_monthly %}" 
+					{% endif %}
+					class="btn btn-success btn-lg btn-block">
+					<span class="currency">$</span>{{ prices.SWEET_SPOT_MONTHLY }}/month
+					<br /> 
+					paid monthly
+				</a>
+			</div>
+		</div>
+        {% if is_black_friday %}
+		<div class="black_friday_sale text-center">
+			<strong>BLACK FRIDAY <span>SALE</span></strong>
+		</div>
+		{% endif %}
+	</div><!--/Sweet Spot -->
+
+	<div class="{% if modal_pricing_table %}col-lg-3{% elif overview_pricing_tabel %}col-lg-4{% else %}col-lg-2{% endif %} col-xs-6">
+		<div class="price-col second-tier">
+			<h4>Pro</h4>
+			<div class="price-row-light">Unlimited Subscribers</div>
+			<div class="price-row">1.5 mil Notifications</div>
+			<div class="price-row-light">Statistics</div>
+			<div class="price-row">Granular Filtering</div>
+			<div class="price-row-light">Custom Branded</div>
+			<div class="price-row">CTA Banners</div>
+			<div class="price-row-light">Data Export</div>
+			<div class="price-row">Lovable Support</div>
+			<div class="price-row last-row">5 Websites</div>
+			<div class="button-row centered">
+				{% if modal_pricing_table or overview_pricing_tabel %}
+				<a href="{% url 'payment_overview' 'yearly' plans.PRO %}" 
+					{% else %}
+				<a href="{% url 'register_preselected_plan' plans.pro_year %}" 
+					{% endif %}
+					class="btn btn-success btn-lg btn-block">
+					<span class="currency">$</span>{{ prices.pro_monthly_paid_yearly|floatformat }}/month
+					<br /> 
+					paid yearly
+				</a>
+			</div>
+		</div>
+		<div class="or-row">
+			<div class="top"></div>
+			<div class="or-circle">or</div>
+		</div>
+		<div class="second-tier price-yearly">
+			<div class="button-row centered">
+				{% if modal_pricing_table or overview_pricing_tabel %}
+				<a href="{% url 'payment_overview' 'monthly' plans.PRO %}" 
+					{% else %}
+				<a href="{% url 'register_preselected_plan' plans.pro_monthly %}" 
+					{% endif %}
+					class="btn btn-success btn-lg btn-block">
+					<span class="currency">$</span>{{ prices.PRO_MONTHLY }}/month
+					<br /> 
+					paid monthly
+				</a>
+			</div>
+		</div>
+	</div><!--/Pro -->
+
+	{% if not overview_pricing_tabel %}
+	<div class="{% if modal_pricing_table %}col-lg-3{% else %}col-lg-2{% endif %} col-xs-6">
+		<div class="price-col third-tier">
+			<h4>Custom</h4>
+			<div class="price-row-light">&gt; 1.5mil Notifications</div>
+			<div class="price-row">&gt; 5 Websites</div>
+			<div class="price-row custom-desc">Need a custom solution that fits your specific needs? Get in touch!</div>
+			<div class="button-row centered">
+				<a href="mailto:hello@getpushmonkey.com" class="btn btn-success btn-lg btn-block">Contact Us</a>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+</div><!--.row -->

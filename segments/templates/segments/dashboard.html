@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Websites{% endblock %}
+
+{% block content %}
+
+<div class="header-background inner-background">
+  <div class="site-inner">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+    {% include 'navigation-sticky.html' %}
+    <div class="fullheader-banner inner-banner text-left">
+      <div class="container">
+        <h3>Segments</h3>        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-inner">
+  <div id="content" class="website-content">
+    <div class="container" id="websites">
+      <div class="row">
+        <div class="col-md-12">
+          {% if messages %}
+            {% for message in messages %}
+            <p class="bg-danger">{{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        </div><!-- .col -->
+      </div><!-- .row -->
+      <div class="row">
+        <!-- Nav tabs -->
+        {% with active_tab="segmentation" %}
+          {% include 'tabs_menu.html' %}
+        {% endwith %}
+      </div><!-- .row -->      
+      <div class="row">
+        <div class="col-md-12">
+            <h3>Segmentation</h3>
+            <p>
+              Add or remove topics of interest that your readers can subscribe to. 
+              <a>More info...</a>
+            </p>
+        </div><!-- .col -->
+        <div class="col-md-12">
+          <form method="post">                  
+            <table class="table table-hover table-striped">              
+              <thead>
+                <tr>
+                  <td>Name</td>
+                  <td>Actions</td>
+                </tr>
+              </thead>
+              <tbody>
+                {% for segment in segments %}
+                <tr>
+                  <td>
+                    <strong>{{ segment.name }}</strong><br>
+                    <i>({{ segment.subscriber_count }} subscriber{{ segment.subscriber_count|pluralize }})</i>
+                  </td>
+                  <td><a href="{% url 'segments_delete' segment.id %}" class="btn btn-warning">Delete</a></td>
+                </tr>          
+                {% empty %}
+                <tr>
+                  <td colspan="2" class="text-center">
+                    No segments created yet. Why not create some? 
+                    <a href="">
+                      What are topics?
+                    </a>
+                  </td>
+                </tr>          
+                {% endfor %}
+                <tr>
+                  <td>
+                    {% csrf_token %}
+                    <div class="form-group {% if form.name.errors %}has-error{% endif %}">
+                      <input type="text" class="form-control" placeholder="Enter New Topic" name="name"/>
+                      {% if form.name.errors %}
+                      <span class="text-danger">{{ form.name.errors }}</span>
+                      {% endif %}
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-success" type="submit">Add New Topic</button>
+                  </td>
+                </tr>      
+              </tbody>
+            </table>
+          </form>        
+        </div><!-- .col -->
+      </div><!-- .row -->
+    </div>
+  </div>
+</div>
+{% endblock %}

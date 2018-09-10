@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block extrajs %}
+{% include "stats/stats-js-block.html" %}
+{% endblock %}
+
+{% block extrabody %}
+class="iframe"
+{% endblock %}
+
+{% block content %}
+<div class="stats container">
+    <div class="row">
+        {% if should_show_placeholder %}
+        <div class="col-lg-12 hidden-xs">
+            <img src="{{ STATIC_URL }}img/plugin-stats-placeholder.jpg" class="img-responsive" />
+        </div><!-- .col -->
+        <div class="col-lg-12 visible-xs">
+            <img src="{{ STATIC_URL }}img/plugin-stats-placeholder-small.jpg" class="img-responsive" />
+        </div><!-- .col -->
+        {% else %}
+        <div class="col-md-2 col-xs-4">
+            <div class="number_box box_light_orange">
+                <p class="box_label hidden-xs">Subscribers</p>
+                <p class="box_label_small visible-xs-block ">Subscribers</p>
+
+                <p class="box_number hidden-xs">{{ subscribers }}</p>
+                <p class="box_number_small visible-xs-block">{{ subscribers }}</p>
+            </div>
+
+            <div class="number_box box_green">
+                <p class="box_label hidden-xs">Sent Notifications</p>
+                <p class="box_label_small visible-xs-block">Sent <br /> Notifications</p>
+
+                <p class="box_number hidden-xs">{{ sent_notifications }}</p>
+                <p class="box_number_small visible-xs-block">{{ sent_notifications }}</p>
+            </div>
+
+            <div class="number_box box_orange">
+                <p class="box_label hidden-xs">Notifications</p>
+                <p class="box_label_small visible-xs-block">Notifications</p>
+
+                <p class="box_number hidden-xs">{{ notifications }}</p>
+                <p class="box_number_small visible-xs-block">{{ notifications }}</p>
+            </div>
+        </div><!-- /.col- -->
+
+        <div class="col-md-4 col-xs-8">
+            <div class="doughnut-chart-wrapper">
+                <canvas id="doughnut-chart"></canvas>
+            </div> 
+            <div class="col-md-8 col-md-offset-2">
+                <div class="legend_dataset_three"> Remaining Notifications </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="legend_dataset_two"> Sent Notifications	</div>
+            </div>
+        </div><!-- /.col- -->
+
+        <div class="col-md-6 col-xs-11">
+            <div class="chart-wrapper">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+
+        <div class="col-md-3 col-xs-6">
+            <div class="legend_dataset_two"> Sent Notifications	</div>
+        </div>
+        <div class="col-md-3 col-xs-6">
+            <div class="legend_dataset_one"> Opened Notifications </div>
+        </div>
+        {% endif %}
+    </div><!-- /.row -->
+
+</div><!-- .stats -->
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

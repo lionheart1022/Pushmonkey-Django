@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title></title>
+<script>
+(function(tweenui) {
+var timeline;
+var loop=-1;
+var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+function startPlaying() { if (loop<0) timeline.play(0); else { if (loop>0){loop--;timeline.play(0)}}}
+function g(name) { name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]"); var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"); var results = regex.exec(window.location.search); if(results == null) return ""; else return decodeURIComponent(results[1].replace(/\+/g, " ")); }
+function gl(a){for(var i=0;i<a.length;++i){var x=g(a[i]);if (x!='')return x;}return '';}
+var res = function() { var bd = document.getElementsByTagName('body')[0];bd.style.webkitTransform = 'scale(' + window.innerWidth/796 + ')';bd.style.transform = 'scale(' + window.innerWidth/796 + ')';if (iOS) { setTimeout(function() {window.onresize = ires},100) } else { window.onresize = res }bd.style.display = '';}
+var ires = function() { if (window.onresize) { window.onresize = null; var bd = document.getElementsByTagName('body')[0]; bd.style.display = 'none'; setTimeout(res, 500); }}
+var loadcnt = 3;
+function tui_go() {
+--loadcnt; if (loadcnt==0) {
+var l = gl(["l","clickTAG"]); var ctl = document.getElementById("tui-ctl");
+if (l!="" && ctl) { if (g('a')==1) { l = l + encodeURIComponent(ctl.href) } ctl.href=l; }
+if (typeof(tweenui.exp) == "function") { tweenui.exp(); }
+if (g('s')==1) { res();if (iOS) { window.addEventListener('orientationchange', ires, false) }}
+document.getElementsByTagName('body')[0].style.opacity=1;
+startPlaying();
+}
+}
+tweenui.init = function() {
+timeline = new TimelineLite({paused:true, onComplete:startPlaying});
+TweenLite.defaultOverwrite = "none";
+timeline.insert(new TweenLite({}, 0.0, {}), 17.0);
+var layer_1 = document.getElementById("tui-33");
+TweenLite.set(layer_1, {css: {autoAlpha: 1.0, x: 0, y: 0, scale: 1.0, rotationX: 0.0, rotationY: 0.0, rotationZ: 0.0}});
+var layer_2 = document.getElementById("tui-34");
+timeline.insert(TweenLite.to(layer_2, 0, {css:{display: "block"}, immediateRender:false}), 16.052223006351447);
+timeline.insert(TweenLite.to(layer_2, 0.5158786167960481, {css: {autoAlpha: 0.0}, ease: Power1.easeOut}), 16.2681721947777);
+TweenLite.set(layer_2, {css: {autoAlpha: 1.0, x: 0, y: 0, scale: 1.0, rotationX: 0.0, rotationY: 0.0, rotationZ: 0.0}});
+var layer_3 = document.getElementById("tui-31");
+timeline.insert(TweenLite.to(layer_3, 0, {css:{display: "block"}, immediateRender:false}), 13.976711362032464);
+timeline.insert(TweenLite.to(layer_3, 0, {css:{display: "none"}, immediateRender:false}), 16.088214537755825);
+timeline.insert(TweenLite.to(layer_3, 1.9195483415666903, {css: {autoAlpha: 1.0}, ease: Power1.easeOut}), 14.108680310515174);
+timeline.insert(TweenLite.to(layer_3, 1.8475652787579393, {css: {y: 0, x: 0}, ease: Power1.easeOut}), 14.132674664784757);
+TweenLite.set(layer_3, {css: {autoAlpha: 0.0, x: 300, y: 0, scale: 1.0, rotationX: 0.0, rotationY: 0.0, rotationZ: 0.0}});
+var layer_4 = document.getElementById("tui-32");
+timeline.insert(TweenLite.to(layer_4, 0, {css:{display: "block"}, immediateRender:false}), 11.829216654904728);
+timeline.insert(TweenLite.to(layer_4, 0, {css:{display: "none"}, immediateRender:false}), 14.08468595624559);
+timeline.insert(TweenLite.to(layer_4, 1.9195483415666903, {css: {autoAlpha: 0.0}, ease: Power1.easeOut}), 12.105151729004941);
+timeline.insert(TweenLite.to(layer_4, 1.5716302046577277, {css: {y: 42, x: 0}, ease: Power1.easeOut}), 12.345095271700776);
+TweenLite.set(layer_4, {css: {autoAlpha: 1.0, x: 0, y: 0, scale: 1.0, rotationX: 0.0, rotationY: 0.0, rotationZ: 0.0}});
+var layer_5 = document.getElementById("tui-30");
+timeline.insert(TweenLite.to(layer_5, 0, {css:{display: "block"}, immediateRender:false}), 8.364963503649635);
+timeline.insert(TweenLite.to(layer_5, 0, {css:{display: "none"}, immediateRender:false}), 11.854014598540147);
+timeline.insert(TweenLite.to(layer_5, 1.8595624558927313, {css: {y: -260, x: -230}, ease: Power1.easeOut}), 9.165843330980946);
+TweenLite.set(layer_5, {css: {autoAlpha: 1.0, x: 0, y: 0, scale: 1.0, rotationX: 0.0, rotationY: 0.0, rotationZ: 0.0}});
+var layer_6 = document.getElementById("tui-29");
+timeline.insert(TweenLite.to(layer_6, 0, {css:{display: "block"}, immediateRender:false}), 8.0);
+timeline.insert(TweenLite.to(layer_6, 0, {css:{display: "none"}, immediateRender:false}), 12.116788321167883);
+timeline.insert(TweenLite.to(layer_6, 1.487649964714185, {css: {autoAlpha: 1.0}, ease: Power1.easeOut}), 8.110091743119266);
+TweenLite.set(layer_6, {css: {autoAlpha: 0.0, x: 0, y: 0, scale: 1.0, rotationX: 0.0, rotationY: 0.0, rotationZ: 0.0}});
+var layer_7 = document.getElementById("tui-28");
+timeline.insert(TweenLite.to(layer_7, 0, {css:{display: "block"}, immediateRender:false}), 5.182481751824818);
+timeline.insert(TweenLite.to(layer_7, 0, {css:{display: "none"}, immediateRender:false}), 7.664233576642336);
+timeline.insert(TweenLite.to(layer_7, 0.5038814396612562, {css: {autoAlpha: 1.0}, ease: Power1.easeOut}), 5.254763585038814);
+timeline.insert(TweenLite.to(layer_7, 2.0515172900494, {css: {y: -180, x: -290}, ease: Power1.easeOut}), 5.254763585038814);
+TweenLite.set(layer_7, {css: {autoAlpha: 0.0, x: 0, y: 0, scale: 1.0, rotationX: 0.0, rotationY: 0.0, rotationZ: 0.0}});
+var layer_8 = document.getElementById("tui-27");
+timeline.insert(TweenLite.to(layer_8, 0, {css:{display: "block"}, immediateRender:false}), 4.450952717007763);
+timeline.insert(TweenLite.to(layer_8, 0, {css:{display: "none"}, immediateRender:false}), 8.002117148906141);
+timeline.insert(TweenLite.to(layer_8, 0.9357798165137615, {css: {autoAlpha: 1.0}, ease: Power1.easeOut}), 4.55892731122089);
+TweenLite.set(layer_8, {css: {autoAlpha: 0.0, x: 0, y: 0, scale: 1.0, rotationX: 0.0, rotationY: 0.0, rotationZ: 0.0}});
+var layer_9 = document.getElementById("tui-26");
+timeline.insert(TweenLite.to(layer_9, 0, {css:{display: "block"}, immediateRender:false}), 1.0557515878616797);
+timeline.insert(TweenLite.to(layer_9, 0, {css:{display: "none"}, immediateRender:false}), 12.057163020465774);
+timeline.insert(TweenLite.to(layer_9, 2.3754410726887794, {css: {y: 0, x: 0}, ease: Power1.easeOut}), 1.103740296400847);
+timeline.insert(TweenLite.to(layer_9, 2.1474947071277346, {css: {autoAlpha: 1.0}, ease: Power1.easeOut}), 1.1397318278052224);
+TweenLite.set(layer_9, {css: {autoAlpha: 0.0, x: 0, y: 38, scale: 1.0, rotationX: 0.0, rotationY: 0.0, rotationZ: 0.0}});
+var layer_10 = document.getElementById("tui-25");
+TweenLite.set(layer_10, {css: {autoAlpha: 1.0, x: 0, y: 0, scale: 1.0, rotationX: 0.0, rotationY: 0.0, rotationZ: 0.0}});
+tui_go();
+}
+tui_go();
+var imgcnt = 10;
+tweenui.imgcntd = function(e) { var id = e.id.replace(/[^0-9.]/g, "");e.parentNode.removeChild(e);document.getElementById('tui-' + id).appendChild(e); --imgcnt; if (imgcnt==0) { tui_go(); }}
+}(window.tweenui = window.tweenui || {}));</script>
+<style type="text/css">
+body { -webkit-transform-origin: 0 0; transform-origin: 0 0; margin: 0px; padding: 0px; }
+#tui-animation { overflow: hidden; position: relative; width: 796px; height: 607px; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-perspective: 500px; perspective: 500px; }
+#tui-animation div { -webkit-transform-style: preserve-3d; transform-style: preserve-3d; }
+#tui-animation img { display: block; }
+#tui-ct { position: absolute; width: 796px; height: 607px; border: 1px solid transparent; box-sizing: border-box; z-index: 11; }
+#tui-33 { position: absolute; z-index: 10; }
+#tui-34 { display: none; position: absolute; z-index: 9; }
+#tui-31 { display: none; position: absolute; z-index: 8; }
+#tui-32 { display: none; position: absolute; z-index: 7; }
+#tui-30 { display: none; position: absolute; z-index: 6; }
+#tui-29 { display: none; position: absolute; z-index: 5; }
+#tui-28 { display: none; position: absolute; z-index: 4; }
+#tui-27 { display: none; position: absolute; z-index: 3; }
+#tui-26 { display: none; position: absolute; z-index: 2; }
+#tui-25 { position: absolute; z-index: 1; }
+</style></head><body style="opacity:0; border:none;">
+<div id="tui-animation"><div id="tui-ct"></div>
+<div id="tui-33"></div>
+<div id="tui-34"></div>
+<div id="tui-31"></div>
+<div id="tui-32"></div>
+<div id="tui-30"></div>
+<div id="tui-29"></div>
+<div id="tui-28"></div>
+<div id="tui-27"></div>
+<div id="tui-26"></div>
+<div id="tui-25"></div>
+</div>
+<img src="img/c2b9330f26231415ad2f358e79772ee4.png" onLoad="tweenui.imgcntd(this)" id="tui-img-29" />
+<img src="img/1ddf3a25523e2d21fc177680e5d9e193.png" onLoad="tweenui.imgcntd(this)" id="tui-img-30" />
+<img src="img/679ee66b41c4d35a14113ad8a8426993.png" onLoad="tweenui.imgcntd(this)" id="tui-img-25" />
+<img src="img/5623f19b1813f87d5fb6344ce6499111.png" onLoad="tweenui.imgcntd(this)" id="tui-img-27" />
+<img src="img/c266dc0b3ef033601d71dc273cc0c587.png" onLoad="tweenui.imgcntd(this)" id="tui-img-31" />
+<img src="img/13a995bbae33f623c111a16bae78d20c.png" onLoad="tweenui.imgcntd(this)" id="tui-img-33" />
+<img src="img/c709f6691c175478ae028faa99871842.png" onLoad="tweenui.imgcntd(this)" id="tui-img-32" />
+<img src="img/c266dc0b3ef033601d71dc273cc0c587.png" onLoad="tweenui.imgcntd(this)" id="tui-img-34" />
+<img src="img/c709f6691c175478ae028faa99871842.png" onLoad="tweenui.imgcntd(this)" id="tui-img-26" />
+<img src="img/1ddf3a25523e2d21fc177680e5d9e193.png" onLoad="tweenui.imgcntd(this)" id="tui-img-28" />
+<script>
+(function(d, t) {
+var s = d.createElement(t);
+s.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js';
+s.onload = s.onreadystatechange = function() {
+var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+tweenui.init();
+};
+var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+})(document, 'script');
+</script>
+
+</body>
+</html>

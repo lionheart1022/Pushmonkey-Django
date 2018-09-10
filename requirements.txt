@@ -1,0 +1,10 @@
+Django<=1.4
+pyOpenSSL>=0.10
+django-fields>=0.1.2
+django-uuidfield
+psycopg2
+south
+six==1.11.0
+pillow
+django-imagekit
+requests

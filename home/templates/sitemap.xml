@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://www.getpushmonkey.com/</loc>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/login</loc>
+  <lastmod>2015-01-23T12:25:10+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/register</loc>
+  <lastmod>2015-01-23T12:25:10+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/register/plan/1-M</loc>
+  <lastmod>2015-01-23T12:25:10+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/register/plan/1-Y</loc>
+  <lastmod>2015-01-23T12:25:10+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/register/plan/2-M</loc>
+  <lastmod>2015-01-23T12:25:11+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/register/plan/2-Y</loc>
+  <lastmod>2015-01-23T12:25:11+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/register/plan/3-M</loc>
+  <lastmod>2015-01-23T12:25:11+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/register/plan/3-Y</loc>
+  <lastmod>2015-01-23T12:25:11+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/team</loc>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/af/join</loc>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/login?next=/coupons/redeem</loc>
+  <lastmod>2015-01-23T12:25:12+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/help</loc>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/password_reset</loc>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/terms-and-conditions</loc>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/privacy-policy</loc>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/af/terms-and-conditions</loc>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/login?source=help</loc>
+  <lastmod>2015-01-23T12:25:14+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.getpushmonkey.com/register?source=help</loc>
+  <lastmod>2015-01-23T12:25:15+00:00</lastmod>
+</url>
+</urlset>
