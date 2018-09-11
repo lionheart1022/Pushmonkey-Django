@@ -1,0 +1,36 @@
+{{ first_name }},
+
+Thank you for joining the Push Monkey Affiliate Program. Cool bananas! Come in, have some fruits.
+
+Your special affiliate link is:
+
+{{ affiliate_url }}
+
+Share it whenever you meet somebody who would benefit from using desktop push notifications: friends, clients, colleagues.
+
+Tweet this: https://twitter.com/home?status=Engage%20%26%20delight%20your%20readers%20with%20desktop%20push%20notifications%20for%20@wordpress%20from%20http://getpushmonkey.com%20via%20@getpushmonkey%20%23wordpress
+
+Or follow this URL: https://www.facebook.com/sharer/sharer.php?u=http://getpushmonkey.com
+
+Whever you need to see your affiliate stats, you can go to your Affiliate Center ({{ affiliate_center_url }}) .
+
+** Tip:
+------------------------------------------------------------
+
+Take advantage of the banners and badges that we have prepared for you. You can find them in your Affiliate Center ({{ affiliate_center_url }}) in the Banners section.
+
+Stay up to date and in touch with a few different ways:
+
+Follow @getpushmonkey (https://twitter.com/getpushmonkey) on Twitter
+Follow @bleau (https://twitter.com/bleau) on Twitter
+Follow @tudorizer (https://twitter.com/tudorizer) on Twitter
+Follow the Push Monkey Blog (http://blog.getpushmonkey.com?source=email) to see what new features we bring out and you can take advantage of!
+
+Let us know how this goes,
+Alex
+getpushmonkey.com (http://getpushmonkey.com?source=email)
+
+
+Photo courtesy of: http://www.cocopine.co.za/ (http://www.cocopine.co.za)
+
+©2014 Push Monkey. All rights reserved.
