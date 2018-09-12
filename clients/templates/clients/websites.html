@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Websites{% endblock %}
+
+{% block content %}
+
+<div class="header-background inner-background">
+  <div class="site-inner">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+    {% include 'navigation-sticky.html' %}
+    <div class="fullheader-banner inner-banner text-left">
+      <div class="container">
+        <h3>Manage Websites</h3>        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-inner">
+  <div id="content" class="website-content">
+    <div class="container" id="websites">
+      <div class="row">
+        <div class="col-md-12">
+          {% if messages %}
+            {% for message in messages %}
+            <p class="bg-danger">{{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        </div><!-- .col -->
+      </div><!-- .row -->
+      <div class="row">
+        <!-- Nav tabs -->
+        {% with is_pro=True %}
+          {% with active_tab="manage-websites" %}
+            {% include 'tabs_menu.html' %}
+          {% endwith %}
+        {% endwith %}
+      </div><!-- .row -->      
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Existing Websites</h3>
+          <table class="table table-striped">
+            <tr class="row">
+              <td class="col-md-2">
+                <img src="{{ profile.profileimage.image32.url }}" />
+              </td>
+              <td class="col-md-10">
+                <strong>{{ profile.website_name }}</strong>
+                <br />
+                <span>{{ profile.website }}</span>
+                <div class="text-right">
+                  <a class="btn btn-xs btn-warning" href="{% url 'icon_upload' %}">change icon</a>
+                </div>
+              </td>
+            </tr>
+            {% for website in cluster.website_set.all %}
+            <tr class="row">
+              <td class="col-md-2">
+                <img src="{{ website.icon.image32.url }}" />
+              </td>
+              <td class="col-md-10">
+                <strong>{{ website.website_name }}</strong>
+                <br />
+                <span>{{ website.website_url }}</span>
+                {% if website.agent %}
+                <br />
+                <span>{{ website.agent }}</span>
+                {% endif %}
+                <div class="text-right">
+                  <a class="btn btn-xs btn-danger" href="{% url 'websites_delete' website.id %}">delete</a>
+                  <a class="btn btn-xs btn-warning" href="{% url 'website_icon_upload' website.id %}">change icon</a>
+                  {% if website.agent %}
+                  <a class="btn btn-xs btn-warning" href="{% url 'websites_resend_invitation' website.id %}">resend</a>
+                  {% endif %}
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>          
+        </div><!-- .col -->
+        <div class="col-md-4">
+          <h3>Add Website</h3>
+          {% if too_many_websites %}
+          <div class="non-field-errors">
+            <ul class="errorlist">
+              <li>You have already added the maximum of website available.</li>
+            </ul>
+          </div>
+          {% endif %}
+          <form enctype="multipart/form-data" action="{% url 'websites' %}" method="post">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+            <div class="non-field-errors">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+            <div class="form-group {% if form.website_name.errors %}has-error{% endif %}">
+              <label class="control-label" for="{{ form.website_name.html_name }}">{{ form.website_name.label }}</label>
+              <input value="{{ form.website_name.value|default:"" }}" type="text" class="form-control" 
+              id="{{ form.website_name.html_name }}" name="{{ form.website_name.html_name }}" {% if too_many_websites %}disabled{% endif %} />
+            </div>
+            <div class="form-group {% if form.website_url.errors %}has-error{% endif %}">
+              <label class="control-label" for="{{ form.website_url.html_name }}">{{ form.website_url.label }}</label>
+              <input value="{{ form.website_url.value|default:"" }}" type="text" class="form-control" id="{{ form.website_url.html_name }}" name="{{ form.website_url.html_name }}" {% if too_many_websites %}disabled{% endif %}/>
+              <span class="help-block">{{ form.website_url.help_text }}</span>
+            </div>
+            <div class="form-group {% if form.agent.errors %}has-error{% endif %}">
+               <label class="control-label" for="{{ form.agent.html_name }}">{{ form.agent.label }}</label>
+               <input value="{{ form.agent.value|default:"" }}" type="text" id="{{ form.agent.html_name }}" name="{{ form.agent.html_name }}"/>
+               {% if form.agent.errors %}
+                {% for error in form.agent.errors %}
+                  <p class="bg-danger">{{ error }}</p>
+                {% endfor %}
+               {% endif %}
+               <span class="help-block">{{ form.agent.help_text }}</span>
+            </div><!-- .form-group -->            
+            <div class="form-group {% if form.icon.errors %}has-error{% endif %}">
+              <label class="control-label" for="{{ form.icon.html_name }}">{{ form.icon.label }}</label>
+              <input value="{{ form.icon.value|default:"" }}" type="file" id="{{ form.icon.html_name }}" name="{{ form.icon.html_name }}" {% if too_many_websites %}disabled{% endif %}/>
+              <span class="help-block">
+                  The icon will appear inside the
+                  Desktop Push Notification received by your readers.
+                  <strong>Ideally, the image is square, having a minimum size
+                  of 256x256</strong>. And colorful. And recognizable...
+              </span>
+            </div><!-- .form-group --> 
+            <div class="text-right">
+              <button class="btn btn-success" type="submit" {% if too_many_websites %}disabled="disabled"{% endif %}>Submit</button>             
+            </div><!-- .col -->          
+        </div><!-- .col -->
+        <div class="col-md-4 right-details">
+          <h3>Plan</h3>
+          <div class="side-full">
+            <p>You are currently rocking the <strong>Pro</strong> plan. You mean business!</p>
+            <p>
+            This means that you can deploy Push Monkey on up to 5 websites. Please add the URLs, names and icons of 
+            the websites on the form on the left.
+            </p>
+            <h5>Date activated</h5>
+            <span>{{ plan.start_at|date:"Y M j" }}</span>
+            <h5>Date when plan ends</h5>
+            <span>{{ plan.end_at|date:"Y M j" }}</span>
+          </div>          
+        </div><!-- .col -->
+      </div><!-- .row -->
+    </div>
+  </div>
+</div>
+{% endblock %}

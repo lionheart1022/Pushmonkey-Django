@@ -1,0 +1,28 @@
+Hi {{ first_name }},
+
+Your Account Key is:
+
+{{ account_key }}
+
+What is this?
+
+Short answer: this Account Key is required by the Push Monkey Wordpress plugin.
+Copy and paste this Account Key in the plugin configuration, inside your Wordpress Admin.
+
+Long answer: click here (http://www.getpushmonkey.com/help#q4) .
+
+Stay up to date and in touch with a few different ways:
+
+Follow @getpushmonkey (https://twitter.com/getpushmonkey) on Twitter
+Follow @bleau (https://twitter.com/bleau) on Twitter
+Follow @tudorizer (https://twitter.com/tudorizer) on Twitter
+Follow the Push Monkey Blog (http://blog.getpushmonkey.com?source=email) to see what new features we bring out and you can take advantage of!
+
+Let us know how this goes,
+
+Alex
+getpushmonkey.com (http://getpushmonkey.com?source=email)
+
+Photo courtesy of: http://www.cocopine.co.za/ (http://www.cocopine.co.za)
+
+©2014 Push Monkey. All rights reserved.

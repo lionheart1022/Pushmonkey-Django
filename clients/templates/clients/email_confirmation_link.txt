@@ -1,0 +1,19 @@
+Hey {{ first_name }},
+
+** Slick!
+** You are almost ready to send desktop push notifications with Push Monkey.
+------------------------------------------------------------
+
+Click this little link bellow to activate your account:
+{{ confirmation_link }}
+
+If you're human, that is. If you're a bot, go away!
+If you're a monkey, here's a banana:
+
+https://www.flickr.com/photos/sharpie314/7294048580/in/photostream/
+
+Excited to have you on board,
+Alex
+getpushmonkey.com
+
+©2014 Push Monkey. All rights reserved.

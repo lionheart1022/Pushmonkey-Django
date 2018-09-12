@@ -1,0 +1,13 @@
+Hey,
+
+You have been invited to manage the website notifications for {{ website_name }}. Accept the invitation by clicking the link:
+
+{{ link }}
+
+Excited to have you on board,
+Tudor
+getpushmonkey.com
+
+If you need help with PushMonkey or you have questions, please reach out to us at support@getpushmonkey.com. We'd be happy to help.
+
+©2017 Push Monkey. All rights reserved.
