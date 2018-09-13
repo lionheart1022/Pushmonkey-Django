@@ -1,0 +1,5 @@
+{{ name }} wrote: 
+
+"{{ message }}"
+
+Thoughts?
