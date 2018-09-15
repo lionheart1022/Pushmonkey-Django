@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Redeem Coupon - {% endblock %}
+
+{% block content %}
+<div class="header-background inner-background">
+  <div class="site-inner">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+    {% include 'navigation-sticky.html' %}        
+
+    <div class="fullheader-banner inner-banner text-left">
+      <div class="container">
+        <h3>Redeem Coupon</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-inner">
+  <div id="content" class="website-content">
+    <div class="container" id="login">
+      <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+          <div class="form-container top-spacing">
+            {% if form.non_field_errors %}
+            <div class="non-field-errors">
+                {{ form.non_field_errors }}
+            </div>
+            {% endif %}
+            {% if redeemed %}
+            <div class="bg-success">
+                <p>
+                    Coupon redeemed! How cool is that? You now have the 
+                    <strong>
+                        {% if plan.type == plans.STARTER %}
+                        Starter Plan
+                        {% elif plan.type == plans.SWEET_SPOT %}
+                        Sweet Spot Plan
+                        {% elif plan.type == plans.PRO %}
+                        Pro Plan
+                        {% endif %}
+                    </strong> active until {{ plan.end_at|date:"j M Y" }}.
+                </p>
+                <br /> 
+                <a href="{% url 'dashboard' %}" class="btn btn-success">Go to your Dashboard</a>
+            </div>
+            {% endif %}            
+            <form action="{% url 'redeem_coupon' %}" method="post">
+              <div class="top">
+                <div class="full">
+                  <input type="text" name="{{ form.code.html_name }}" class="form-control" placeholder="Coupon code">
+                  {{ form.code.errors }}                            
+                </div><!-- .col -->
+
+                {% csrf_token %}
+                <input type="submit" name="submit" class="btn btn-lg btn-success" value="Redeem">
+
+              </div>
+            </form>
+            <div class="bottom">
+                <p>
+                    Please paste in the field above the <strong>Coupon Code</strong> you received from one
+                    of our monkeys.
+                </p>                
+            </div>
+          </div>
+        </div>
+      </div><!-- /.row -->
+    </div> 
+  </div>
+  <!-- .website-content -->
+</div>
+{% endblock %}
