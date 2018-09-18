@@ -1,0 +1,25 @@
+Hi {{ first_name }},
+
+It seems that your last awesome push notification that was sent into the world required more notifications than your current plan was able to muster this month.
+
+Now we know what you’re thinking: How many people got my last notification? Well, all of them. We really value you getting your value our of these notifications so we don’t want your readers to be upset either. We helped that baby reach each and every one of your subscribers. This one’s on us.
+
+That being said, you’ve still got {{ remaining_days }} days until your plan and available notifications reset. That means that {{ subscribers }} will not be receiving notifications.
+
+We recommend that you upgrade to {{ next_plan_name }} so you can keep your readers in the loop and coming back to your great content.
+
+Stay up to date and in touch with a few different ways:
+
+Follow @getpushmonkey (https://twitter.com/getpushmonkey) on Twitter
+Follow @bleau (https://twitter.com/bleau) on Twitter
+Follow @tudorizer (https://twitter.com/tudorizer) on Twitter
+Follow the Push Monkey Blog (http://blog.getpushmonkey.com?source=email) to see what new features we bring out and you can take advantage of!
+
+Cheers,
+Alex
+getpushmonkey.com (http://getpushmonkey.com?source=email)
+
+
+Photo courtesy of: http://chrissardegna.com/
+
+©2014 Push Monkey. All rights reserved.
