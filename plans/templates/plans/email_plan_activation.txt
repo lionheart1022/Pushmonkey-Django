@@ -1,0 +1,29 @@
+Hey {{ first_name }},
+
+We appreciate that you decided to subscribe to the {{ plan_name }}. The road ahead to direct engagement with your loyal readers wide open.
+
+Your payment has been received. Please go to your WordPress Admin and Sign In with the credentials you chose during registration.
+
+** Final notes
+--------------
+
+Your subscription goes a long way towards funding the further development of Push Monkey.
+
+There's still a ton of great features and improvements to be done, and you are personally keeping the dream alive.
+
+Stay up to date and in touch with a few different ways:
+
+Follow @getpushmonkey (https://twitter.com/getpushmonkey) on Twitter
+Follow @bleau (https://twitter.com/bleau) on Twitter
+Follow @tudorizer (https://twitter.com/tudorizer) on Twitter
+Follow the Push Monkey Blog (http://blog.getpushmonkey.com?source=email) to see what new features we bring out and you can take advantage of!
+
+You rock,
+Alex and the monkeys
+getpushmonkey.com (http://getpushmonkey.com?source=email)
+
+
+
+Photo courtesy of: http://chrissardegna.com/
+
+©2014 Push Monkey. All rights reserved.
