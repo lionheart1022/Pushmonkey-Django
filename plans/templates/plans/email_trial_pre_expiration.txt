@@ -1,0 +1,14 @@
+Hi {{ first_name }},
+
+The Trial plan you selected will expire in a few days. How did you like Push Monkey so far?
+
+You currently have {{ subscribers }} subscribers.
+
+Follow @getpushmonkey (https://twitter.com/getpushmonkey) on Twitter
+Follow @bleau (https://twitter.com/bleau) on Twitter
+Follow @tudorizer (https://twitter.com/tudorizer) on Twitter
+Follow the Push Monkey Blog (http://blog.getpushmonkey.com?source=email) to see what new features we bring out and you can take advantage of!
+
+Your feedback would make our day better,
+Alex
+getpushmonkey.com (http://getpushmonkey.com?source=email)
