@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Payment Processing - {% endblock %}
+
+{% block content %}
+<div class="header-background inner-background">
+  <div class="site-inner">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+    {% include 'navigation-sticky.html' %}
+    <div class="fullheader-banner inner-banner text-left">
+      <div class="container">
+        <h3>Payment processing</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="site-inner" id="payment-overview">
+  <div id="content" class="website-content">
+    <div class="container">
+
+      <div class="vc_row wpb_row vc_inner vc_row-fluid startnow_monkeybox">
+
+        <div class="colortheme-blue wpb_column vc_column_container vc_col-sm-6 vc_col-sm-offset-3">
+
+          <div class="vc_column-inner text-center">
+            <div class="wpb_wrapper">
+
+                <h1>Thank you for choosing Push Monkey!</h1>
+                {% if selected_plan == plans.STARTER %}
+                <p>
+                    The <strong>Starter Plan</strong> you chose is awesome! The monkey is thankful and it means a lot to us.
+                </p>
+                <p>
+                    You will receive your <strong>Account Key</strong> soon, by e-mail. The Account Key is required by our Wordpress Plugin,
+                    before you can send desktop push notifications to your readers.
+                </p>
+                {% elif selected_plan == plans.SWEET_SPOT %}
+                <p>
+                    The <strong>Sweet Spot Plan</strong> you chose is awesome! The monkey is thankful and it means a lot to us.
+                </p>
+                <p>
+                    You will receive your <strong>Account Key</strong> soon, by e-mail. The Account Key is required by our Wordpress Plugin,
+                    before you can send desktop push notifications to your readers.
+                </p>
+                {% elif selected_plan == plans.PRO %}
+                <p>
+                    The <strong>Pro Plan</strong> you chose is awesome! The monkey is thankful and it means a lot to us.
+                </p>
+                <p>
+                    You will receive your <strong>Account Key</strong> soon, by e-mail. The Account Key is required by our Wordpress Plugin,
+                    before you can send desktop push notifications to your readers.
+                </p>
+                {% endif %}
+                <p>
+                    If you have any questions, don't hesitate to contact us at <a href="mailto:hello@getpushmonkey.com">hello@getpushmonkey.com</a>.
+                </p>
+                <h2>
+                    Enjoy!
+                </h2>
+                <a class="btn btn-success" href="{% url 'dashboard' %}">Back to Dashboard</a>
+            </div>          
+          </div>
+
+        </div><!-- .col -->
+      </div><!-- .row -->
+
+    </div>
+  </div>
+</div>
+{% endblock %}
