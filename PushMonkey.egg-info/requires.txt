@@ -1,4 +1,4 @@
-Django<=1.4
+django>=1.11.18
 pyOpenSSL>=0.10
 django-fields>=0.1.2
 django-uuidfield

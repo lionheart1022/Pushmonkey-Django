@@ -9,5 +9,5 @@ setup(
     author='moWOW Studios',
     author_email='hey@mowowstudios.com',
     url='http://www.python.org/sigs/distutils-sig/',
-    install_requires=['Django<=1.4', 'pyOpenSSL>=0.10', 'django-fields>=0.1.2', 'django-uuidfield', 'psycopg2', 'south', 'six', 'pillow', 'django-imagekit', 'requests'],
+    install_requires=['django>=1.11.18', 'pyOpenSSL>=0.10', 'django-fields>=0.1.2', 'django-uuidfield', 'psycopg2', 'south', 'six', 'pillow', 'django-imagekit', 'requests'],
 )
