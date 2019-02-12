@@ -1,0 +1,75 @@
+<script type="text/javascript">
+	var options = {
+		scaleShowGridLines : true,
+		scaleGridLineColor : "rgba(0,0,0,.05)",
+		scaleGridLineWidth : 1,
+		bezierCurve : true,
+		bezierCurveTension : 0.4,
+		pointDot : true,
+		pointDotRadius : 5,
+		pointDotStrokeWidth : 3,
+		pointHitDetectionRadius : 20,
+		datasetStroke : true,
+		datasetStrokeWidth : 0,
+		datasetFill : true,
+		responsive: true,
+		maintainAspectRatio: false
+	};
+	var data = {
+		labels: {{ labels_dataset|safe }},
+		datasets: [
+			{
+				label: "Sent Notifications",
+				fillColor: "#2FCC70",
+				strokeColor: "#2FCC70",
+				pointColor: "#2FCC70",
+				pointStrokeColor: "#2FCC70",
+				pointHighlightFill: "#8E8E8B",
+				pointHighlightStroke: "#8E8E8B",
+				data: {{ sent_notifications_dataset|safe }} 
+			},
+			{
+				label: "Opened Notifications",
+				fillColor: "#363636",
+				strokeColor: "#363636",
+				pointColor: "#363636",
+				pointStrokeColor: "#363636",
+				pointHighlightFill: "#8E8E8B",
+				pointHighlightStroke: "#8E8E8B",
+				data: {{ opened_notifications_dataset|safe }}
+			}
+		]
+	};
+	var doughnutData = [
+		{
+			value: {{ sent_notifications }},
+			color: "#2FCC70",
+			highlight: "#28b263",
+			label: "Sent Notifications"
+		},
+		{
+			value: {{ remaining_notifications }},
+			color:"#8E8E8B",
+			highlight: "#727270",
+			label: "Remaining"
+		}
+	];
+	var doughnutOptions = {
+		segmentShowStroke : false,
+		//Number - The percentage of the chart that we cut out of the middle
+		percentageInnerCutout : 70, // This is 0 for Pie charts
+		animationSteps : 100,
+		animationEasing : "easeOutBounce",
+		animateRotate : true,
+		animateScale : true,
+		responsive: true
+	};
+	
+	$(function(){
+		var ctx = $("#myChart").get(0).getContext("2d");
+		var myNewChart = new Chart(ctx).Line(data, options);
+
+		var ctx2 = $("#doughnut-chart").get(0).getContext("2d");
+		var doughnutChart = new Chart(ctx2).Doughnut(doughnutData, doughnutOptions);
+	});
+</script>

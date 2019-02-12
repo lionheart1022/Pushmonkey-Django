@@ -1,0 +1,6 @@
+#!/bin/bash
+i=$(date "+%Y-%m-%d")
+python $OPENSHIFT_REPO_DIR/wsgi/openshift/manage.py dumpdata --indent=4 > $OPENSHIFT_DATA_DIR/dump-$i.json
+python $OPENSHIFT_REPO_DIR/wsgi/openshift/manage.py daily_backup 
+rm $OPENSHIFT_DATA_DIR/dump*
+echo "Backup done at $i" >> $OPENSHIFT_LOG_DIR/backup.log

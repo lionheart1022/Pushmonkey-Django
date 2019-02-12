@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Trial - {% endblock %}
+
+{% block content %}
+<div id="navigation" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="/static/img/push-monkey-logo-small.png"></a>
+        </div> <!-- .navbar-header -->
+        <div class="navbar-collapse collapse">
+            <div class="navbar-extra">
+                <span class="username">Hey {{ user.first_name }}!</span>
+                <a href="{% url logout %}" class="btn btn-default">Sign Out</a>
+            </div>
+        </div><!-- .nav-collapse -->
+    </div>
+</div><!-- #navigation -->
+
+<div id="trial_thank_you">
+    <div class="header-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <h1>Thank you for choosing Push Monkey!</h1>
+                    <p>
+                        The <strong>Trial Plan</strong> that you chose is awesome! The monkey is thankful and it means a lot to us. 
+                        This is a good start to finding the right plan for you, if any.
+                        You get <strong>unlimited push notifications</strong> for 30 days. No commitment required!
+                    </p>
+                    <p>
+                        You will receive your <strong>Account Key</strong> soon, by e-mail. The Account Key is required by our Wordpress Plugin,
+                        before you can send desktop push notifications to your readers.
+                    </p>
+                    <h2>
+                        Enjoy!
+                    </h2>
+                </div><!-- .col- -->
+                <div class="col-lg-6 col-lg-offset-1">
+                    {% include 'home/demo-anim.html' %}
+                </div><!-- .col -->
+            </div><!-- .row -->
+            <div class="row">
+                <div class="col-lg-5 text-center">
+                    <a class="btn btn-success" href="{% url dashboard %}">Back to Dashboard</a>
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .header-wrap -->
+</div><!-- #trial_thank_you -->
+{% endblock %}

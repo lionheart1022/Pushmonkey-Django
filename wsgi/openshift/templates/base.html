@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-US" class="js js_active  vc_desktop  vc_transform  vc_transform ">
+	<head>
+		<meta charset="utf-8">
+        <title>{% block title %}{% endblock %}Push Monkey for Wordpress - Chrome, Firefox and Safari Push Notifications</title>
+		<meta name="description" content="Native Desktop Push Notifications for the beloved WordPress - Easiest way to notify your loyal readers about new content">
+		<meta name="author" content="moWOW Studios">
+		<link rel="author" href="http://mowowstudios.com" />
+		<link rel="publisher" href="http://mowowstudios.com" />
+
+		<meta property="og:title" content="Desktop Push Notifications for Wordpress. Easiest way to notifiy your loyal readers about new content" />
+        <meta property="og:site_name" content="Push Monkey" />
+		<meta property="og:type" content="website"/>
+		<meta property="og:image" content="https://dl.dropboxusercontent.com/u/1618599/cdn/push-monkey/facebook-og-image.png"/>
+		<meta property="og:url" content="http://www.getpushmonkey.com"/>
+		<meta property="og:description" content="Native Desktop Push Notifications for the beloved WordPress - Easiest way to notify your loyal readers about new content"/>
+    <meta property="article:author" content="http://facebook.com/getpushmonkey" />
+    <meta property="article:publisher" content="https://www.facebook.com/getpushmonkey" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@getpushmonkey">
+    <meta name="twitter:creator" content="@getpushmonkey">
+    <meta name="twitter:title" content="Push Monkey - Desktop Push Notifications for Wordpress">
+    <meta name="twitter:description" content="Native Desktop Push Notifications for the beloved WordPress - Easiest way to notify your loyal readers about new content">
+    <meta name="twitter:image:src" content="https://dl.dropboxusercontent.com/u/1618599/cdn/push-monkey/twitter-meta-image.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ STATIC_URL }}img/push-monkey-logo-76x76.png" rel="image_src"/> 
+    <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico">
+    <link rel="apple-touch-icon" href="{{ STATIC_URL }}img/push-monkey-logo-60x60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ STATIC_URL }}img/push-monkey-logo-76x76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ STATIC_URL }}img/push-monkey-logo-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ STATIC_URL }}img/push-monkey-logo-152x152.png">
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#0d47a1">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#0d47a1">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">    
+
+    <link href="{{ STATIC_URL }}css/contact-form-7.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}css/wprmenu.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}css/twentysixteen.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}css/js_composer.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}css/wp-port.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}css/wp-custom.css" rel="stylesheet" type="text/css">
+    <link href="{{ STATIC_URL }}css/responsive.css" rel="stylesheet" type="text/css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+    src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous"></script>
+
+    <!--[if lt IE 10]>
+    <link rel='stylesheet' id='twentysixteen-ie-css'  href='{{ STATIC_URL }}css/ie.css' type='text/css' media='all' />
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <link rel='stylesheet' id='twentysixteen-ie8-css'  href='{{ STATIC_URL }}css/ie8.css?ver=20160816' type='text/css' media='all' />
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel='stylesheet' id='twentysixteen-ie7-css'  href='{{ STATIC_URL }}css/ie7.css?ver=20160816' type='text/css' media='all' />
+    <![endif]-->
+
+		<!-- Fonts -->
+    <link rel='stylesheet' id='wprmenu-font-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C600&#038;ver=4.6.1' type='text/css' media='all' />
+    <link rel='stylesheet' id='twentysixteen-fonts-css'  href='https://fonts.googleapis.com/css?family=Merriweather%3A400%2C700%2C900%2C400italic%2C700italic%2C900italic%7CMontserrat%3A400%2C700%7CInconsolata%3A400&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+
+		<!-- Monkey styling -->
+		{% block extracss %}{% endblock %}
+
+		<!-- Monkey scripting -->
+    <script src="{{ STATIC_URL }}js/jquery-migrate.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.sidr.min.js"></script>
+    <script type='text/javascript'>
+    /* <![CDATA[ */
+    var wprmenu = {"zooming":"no","from_width":"767","swipe":"no"};
+    /* ]]> */
+    </script>    
+    <script src="{{ STATIC_URL }}js/wprmenu.js"></script> 
+    <script type='text/javascript' src='{{ STATIC_URL }}js/js_composer_front.min.js'></script>   
+    <!--[if lt IE 9]>
+    <script type='text/javascript' src='{{ STATIC_URL }}/js/html5.js?ver=3.7.3'></script>
+    <![endif]-->    
+		<script src="{{ STATIC_URL }}js/smoothscroll.js"></script>
+		<script src="{{ STATIC_URL }}js/Chart.min.js"></script>
+		{% block extrajs %}{% endblock %}
+	</head>
+	<body {% block extrabody %}{% endblock %}>
+
+    <div id="page" class="site">
+      {% block content %}{% endblock %}      
+
+  		{% block footer %}
+      {% include 'footer.html' %}
+  		{% endblock %}
+    </div>
+		{% block closingjs %}{% endblock %}
+    <script>
+
+    // Smooth Scroll
+    $(function() {
+      $('.menu-item a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({
+              scrollTop: target.offset().top-65
+            }, 1000);
+            return false;
+          }
+        }
+      });
+    });
+
+
+
+    // Sticky Top Menu
+    $(document).ready(function() {
+    var stickyNavTop = $('.sticky-navheader').offset().top;
+    var stickyNav = function(){
+    var scrollTop = $(window).scrollTop();
+    if (scrollTop > stickyNavTop) { 
+        $('.sticky-navheader').addClass('sticky');
+    } else {
+        $('.sticky-navheader').removeClass('sticky'); 
+    }
+    };
+    stickyNav();
+    $(window).scroll(function() {
+        stickyNav();
+    });
+    });
+
+    </script>     
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-56136141-1', 'auto');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
+    </script>
+    <!-- Intercom
+================================================== -->
+    <script>
+      window.intercomSettings = {
+        {% if user.is_authenticated %}
+        name: "{{ user.first_name }}",
+        email: "{{ user.email }}",
+        created_at: "{{ user.date_joined|date:"U" }}",
+        {% endif %}
+        app_id: "t8jt4j4r"
+      };
+    </script>
+    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/t8jt4j4r';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+      <div id="wprmenu_bar" class="wprmenu_bar">
+      <div class="wprmenu_icon">
+      <span class="wprmenu_ic_1"></span>
+      <span class="wprmenu_ic_2"></span>
+      <span class="wprmenu_ic_3"></span>
+      </div>
+      <div class="menu_title">
+      MENU                            </div>
+      </div>
+
+      <div id="wprmenu_menu" class="wprmenu_levels left wprmenu_custom_icons">
+        <ul id="wprmenu_menu_ul">
+      <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-11"><a href="/#Home">Home</a></li>
+      <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-9"><a href="/#Description">Description</a></li>
+      <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-10"><a href="/#Pricing">Pricing</a></li>
+      <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-12"><a href="/#Contact">Contact</a></li>
+      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13"><a href="http://blog.getpushmonkey.com/">Blog</a></li>
+      </ul>
+      </div>    
+	</body>
+</html>

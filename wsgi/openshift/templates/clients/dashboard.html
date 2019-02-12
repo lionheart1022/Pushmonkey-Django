@@ -1,0 +1,278 @@
+{% extends "base.html" %}
+
+{% load humanize %}
+
+{% block title %}Dashboard - {% endblock %}
+
+{% block extrajs %}
+{% include "stats/stats-js-block.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="header-background inner-background">
+  <div class="site-inner">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+    {% include 'navigation-sticky.html' %}
+
+    <div class="fullheader-banner inner-banner text-left">
+      <div class="container">
+        <h3>Dashboard</h3>
+        <h4></h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-inner">
+  <div id="content" class="website-content">
+    <div class="container" id="dashboard">
+      <!-- .row -->
+      <div class="row">
+        <div class="col-lg-12 text-center hey-title">
+          <h2>Hey {{ user.first_name }}</h2>
+        </div>
+        <!-- .col --> 
+      </div>
+      <div class="row">
+        <div class="col-sm-8 left-statics">
+          <h3>Statistics</h3>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="number_box box_light_orange">
+                <p class="box_label hidden-xs">Subscribers</p>
+                <p class="box_label_small visible-xs-block ">Subscribers</p>
+
+                <p class="box_number hidden-xs">0</p>
+                <p class="box_number_small visible-xs-block">{{ subscribers }}</p>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="number_box box_green">
+                <p class="box_label hidden-xs">Sent Notifications</p>
+                <p class="box_label_small visible-xs-block">Sent <br> Notifications</p>
+
+                <p class="box_number hidden-xs">{{ sent_notifications }}</p>
+                <p class="box_number_small visible-xs-block">0</p>
+              </div>
+            </div>
+            <div class="col-sm-4">
+
+              <div class="number_box box_orange">
+                <p class="box_label hidden-xs">Notifications</p>
+                <p class="box_label_small visible-xs-block">Notifications</p>
+
+                <p class="box_number hidden-xs">{{ notifications }}</p>
+                <p class="box_number_small visible-xs-block">0</p>
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="doughnut-chart-wrapper">
+                <canvas id="doughnut-chart"></canvas>
+              </div> 
+              <div class="full">
+                <div class="row">
+                  <div class="col-sm-6"><div class="legend_dataset_three"> Remaining Notifications </div></div>
+                  <div class="col-sm-6"><div class="legend_dataset_two"> Sent Notifications </div></div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-sm-12">
+              <div class="chart-wrapper">
+                <canvas id="myChart"></canvas>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="legend_dataset_two"> Sent Notifications </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="legend_dataset_one"> Opened Notifications </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-sm-4 right-details">
+
+
+          <div class="side-full">
+            <h3>Did you download the WordPress plugin?</h3>
+            <div class="col-lg-3">
+              <img src="{{ STATIC_URL }}images/wordpress-logo.png" class="img-responsive">
+            </div>
+            <div class="col-lg-9 clearfix">
+              <p>
+                In order for Push Monkey to work on your Wordpress site, you also have to download and install our plugin. Once installed just add your Account Key to the plugin and you're all set.
+              </p>
+              <div class="text-right">
+                <a href="https://wordpress.org/plugins/push-monkey-desktop-push-notifications/" class="btn btn-success">Download the WordPress plugin</a> 
+              </div>
+            </div>
+          </div>
+
+          {% if plan %}
+          <div class="side-full">
+            <h3>Plan</h3>
+            {% if plan.type == plans.STARTER %}
+            <p>You are currently rocking the <strong>Starter</strong> plan. Good for you!</p>
+            {% elif plan.type == plans.SWEET_SPOT %}
+            <p>You are currently rocking the <strong>Sweet Spot</strong> plan. Awesome!</p>
+            {% elif plan.type == plans.PRO %}
+            <p>You are currently rocking the <strong>Pro</strong> plan. You mean business!</p>
+            {% elif plan.type == plans.TRIAL %}
+            <p>You are currently rocking the <strong>FREE TRIAL</strong> plan. How is that working for you?</p>
+            {% endif %}            
+
+            <h5>Date activated</h5>
+            <span>{{ plan.start_at|date:"Y M j" }}</span>
+            <h5>Date when plan ends</h5>
+            <span>{{ plan.end_at|date:"Y M j" }}</span>
+
+            {% if plan.type != plans.PRO %}
+            <div class="text-right">
+                <a class="btn btn-success" href="{% url dashboard %}?upgrade_plan=1">Upgrade Plan</a>
+            </div>
+            {% endif %}
+
+          </div>
+          {% endif %}
+
+          {% if plan.type == plans.PRO %}
+          <div class="side-full">
+              <h3>Manage Websites</h3>
+              <p>Because you are on the PRO plan, you can have up to 5 websites.</p>
+              <div class="text-right">
+                  <a class="btn btn-success" href="{% url websites %}">Manage Websites</a>
+              </div>
+          </div>
+          {% endif %}
+
+          <div class="side-full">
+            <h3>Affiliate info</h3>
+            <p>You are part of our affiliate program. Go to your Affiliate Center to see more info and stats.</p>
+            <div class="text-right">
+              <a class="btn btn-success" href="{% url affiliates_center %}">Go to Affiliate Center</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- .row -->
+    </div>
+  </div>
+  <!-- .website-content -->
+</div>
+{% endblock %}
+
+{% block closingjs %}
+<div class="modal fade" id="plan-selection-modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">
+                    {% if not already_had_trial %}
+                        Welcome onboard! 
+                        {% if not has_preselected_plan %}
+                        You seem to be new around here
+                        {% endif %}
+                    {% else %}
+                        Sign up for a new plan.
+                    {% endif %}
+                </h4>
+            </div>
+            <div class="modal-body">
+                {% if not has_preselected_plan  %}
+                <p>
+                    Please select a pricing plan to start sending <strong>Desktop Push Notifications</strong>. See the options below.
+                </p>
+                <div id="pricing">
+                    {% include 'home/pricing-table.html' %}
+                </div>
+                {% else %}
+                <div class="row preselected_plan">
+                    <div class="col-lg-3 col-lg-offset-3 price-table">
+                        {% if plan_type = plans.STARTER %}
+                        <div class="price-col second-tier">
+                            <h4>Starter</h4>
+                            <div class="price-row-light">10k Notifications</div>
+                            <div class="price-row">Statistics</div>
+                            <div class="price-row-light">Granular Filtering</div>
+                            <div class="price-row last-row">Custom Branded</div>
+                        </div>
+                        {% elif plan_type = plans.SWEET_SPOT %}
+                        <div class="price-col first-tier">
+                            <h4>Sweet Spot</h4>
+                            <div class="price-row-light">100k Notifications</div>
+                            <div class="price-row">Statistics</div>
+                            <div class="price-row-light">Granular Filtering</div>
+                            <div class="price-row">Custom Branded</div>
+                            <div class="price-row-light last-row">Data Export</div>
+                        </div>
+                        {% elif plan_type = plans.PRO %}
+                        <div class="price-col second-tier">
+                            <h4>Pro</h4>
+                            <div class="price-row-light">1mil Notifications</div>
+                            <div class="price-row">Statistics</div>
+                            <div class="price-row-light">Granular Filtering</div>
+                            <div class="price-row">Custom Branded</div>
+                            <div class="price-row-light">Data Export</div>
+                            <div class="price-row">Lovable Support</div>
+                            <div class="price-row-light last-row">5 Websites</div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-3">
+                        <p>
+                            You have chosen the
+                            <strong>
+                            {% if plan_type = plans.STARTER %}
+                            Starter Plan
+                            {% elif plan_type = plans.SWEET_SPOT %}
+                            Sweet Spot Plan
+                            {% elif plan_type = plans.PRO %}
+                            Pro Plan
+                            {% endif %}
+                            </strong>. Please continue to the payment overview to finalize your order.
+                        </p>
+                        <div class="text-center">
+                            <a class="btn btn-success" href="{% url payment_overview plan_type_length plan_type %}">Payment Overview</a>
+                            <a href="{% url dashboard %}?change_plan=1" class="btn btn-info"> Change selected plan?  </a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="row">
+                    {% if has_preselected_plan %}
+                    <br /> <br /> <br /> <br />
+                    {% endif %}
+                    {% if not already_had_trial %}
+                    <div class="col-lg-9 free-trial-desc">
+                        <p>
+                            If you're not sure about which price plan is right for you, you can choose our <strong> 30 FREE Trial</strong>. No credit-cards, no
+                            commitment required.
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-xs-6 free-trial-button">
+                        <a class="btn btn-success btn-block" href="{% url trial_thank_you %}">Start FREE Trial</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script type="text/javascript">
+    {% if not plan or has_only_expired_plans or wants_to_upgrade %}
+    $(function(){
+
+      $('div#plan-selection-modal').modal();
+    });
+    {% endif %}
+</script>
+{% endblock %}

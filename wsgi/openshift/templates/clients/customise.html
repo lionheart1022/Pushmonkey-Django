@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block title %}Customise - {% endblock %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.fileupload.css">
+{% endblock %}
+
+{% block content %}
+<div class="header-background inner-background">
+    <div class="site-inner">
+        <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+        {% include 'navigation-sticky.html' %}
+        
+        <div class="fullheader-banner inner-banner text-left">
+        <div class="container">
+        
+        <h3>Sign up</h3>
+        <h4></h4>
+        
+        </div>
+        </div>
+        
+        
+        </div>
+        </div>
+
+
+<div class="site-inner">
+        <div id="content" class="website-content">
+<div class="container" id="customise">  
+    
+
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-1">
+            <div class="form-container top-spacing">
+                {% if form.non_field_errors %}
+                <div class="non-field-errors">
+                    {{ form.non_field_errors }}
+                </div>
+                {% endif %}
+                {% if success %}
+                <div class="bg-success">
+                    <p>
+                        Image uploaded. Looking good!
+                    </p>
+                    <br /> 
+                    <a href="{% url dashboard %}" class="btn btn-success">Continue</a>
+                </div>
+                {% endif %}                
+                
+                <form method="post" enctype="multipart/form-data">
+                    <div class="top clearfix">
+                        <div class="full">      
+                            <input type="text" value="{{ form.website_name.value }}" class="{% if form.website_name.errors %}error{% endif %} form-control" name="{{ form.website_name.html_name }}" placeholder="Website Name">
+                            {{ form.website_name.errors }}
+                        </div><!-- .col -->
+                        <div class="full">
+                            <input type="text" value="{{ form.website_url.value }}" class="{% if form.website_url.errors %}error{% endif %} form-control" name="{{ form.website_url.html_name }}" placeholder="Website URL (with http:// or https://)">
+                            {{ form.website_url.errors }}
+                        </div><!-- .col -->
+                        <div class="full">
+                            <label class="">Website Icon</label>
+                        </div><!-- .col -->
+                        <div class="full text-center">
+                            {% if profile_image %}
+                            <img src="{{ profile_image.image.url }}" class="icon"/>
+                            {% else %}
+                            <img src="{{ placeholder_profile_image_url }}" class="icon"/>
+                            {% endif %}
+                            <br>
+                            <span class="btn btn-success fileinput-button">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                <span>Select file</span>
+                                <input type="file" id="id_image" name="image">
+                            </span>
+                            <h3 id="upload-message" style="display: none;">Uploading...</h3>
+                        </div><!-- .col -->
+                        <div class="full">
+                            <p>
+                                The icon will appear inside the
+                                Desktop Push Notification received by your readers.
+                                <strong>Ideally, the image is square, having a minimum size
+                                of 256x256</strong>. And colorful. And recognizable... 
+                            </p>
+                        </div><!-- .col -->
+                        {{ form.profile_id }}
+                        <input id="final_submit" type="submit" name="submit" class="btn btn-lg btn-success" value="Go to Final Step" style="display: none;">
+                    </div>
+                    {% csrf_token %}
+                </form>
+            </div><!-- .form-container -->
+        </div><!-- .col - -->
+        <div class="col-lg-4 col-lg-offset-1">
+            <div class="notification-placeholder">
+                <img src="{{ STATIC_URL }}images/notification-image-upload-placeholder.png" width="351" height="237" alt="notification-image-upload-placeholde">
+                <div class="notification">
+                    {% if profile_image %}
+                    <img src="{{ profile_image.image.url }}" class="icon"/>
+                    {% else %}
+                    <img src="{{ placeholder_profile_image_url }}" class="icon"/>
+                    {% endif %}                    
+                    <p>
+                        <strong>Something cool will launch</strong><br> 
+                        From today onward, readers can stay up-to-date with news in the most direct ...
+                    </p>
+                </div>
+            </div>
+            <h3 class="text-center">Preview</h3>
+        </div><!-- .col - -->
+    </div><!-- .row --> 
+    <br> <br>
+
+   <div class="row reg-steps">
+        <div class="col-lg-3 col-lg-offset-1 reg-step">
+            <div class="text-left step-number">
+                <p><strong>1.</strong> <br>  Registration</p>
+            </div><!-- .col -->
+        </div><!-- .col -->        
+        <div class="col-lg-3 col-lg-offset-1 reg-step">
+            <div class="text-left step-number active">
+                <p><strong>2.</strong><br>  Customizing </p>
+            </div>
+        </div><!-- .col -->        
+        <div class="col-lg-3 col-lg-offset-1 reg-step">
+            <div class="text-left step-number">
+                <p><strong>3.</strong><br>  Overview </p>
+            </div>
+        </div><!-- .col -->        
+    </div>
+    </div>
+</div>
+
+<!-- .website-content -->
+
+</div>        
+{% endblock %}
+
+{% block closingjs %}
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="{{ STATIC_URL }}js/jquery.ui.widget.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="{{ STATIC_URL }}js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="{{ STATIC_URL }}js/jquery.fileupload.js"></script>
+<script type="text/javascript">
+$( function() {
+        var formData = $('#fileupload').serializeArray();
+        formData.push(
+            { name: "csrfmiddlewaretoken", value: "{{ csrf_token }}" },
+            { name: "profile_id", value: "{{ profile.id }}"}
+        );
+        var finalSubmitButton = $('#final_submit');
+        {% if not profile_image %}
+        finalSubmitButton.hide();
+        {% endif %}
+        var uploadButton = $('span.fileinput-button');
+        var uploadMessage = $('#upload-message');
+        var uploadMessageHtml = uploadMessage.html();
+        uploadMessage.hide();
+        $('#id_image').fileupload({
+                url: '/uploads/icon-upload',
+                dataType: 'json',
+                formData: formData,
+                singleFileUploads: true,
+                add: function (e, data) {
+                    uploadButton.fadeOut();
+                    uploadMessage.show();
+                    data.submit();
+                },
+                done: function (e, data) {
+                    uploadMessage.hide();
+                    uploadButton.fadeIn();
+                    var imgTag = $('img.icon');
+                    $.each(data.result.files, function (index, file) {
+                       imgTag.attr('src', file.url); 
+                       finalSubmitButton.fadeIn();
+                    });
+                },
+                progressall: function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    var newHtml = uploadMessageHtml + " " + progress.toString() + "%";
+                    uploadMessage.html(newHtml);
+                }
+        }).bind('fileuploadfail', function() {
+            uploadMessage.html('Upload failed. Please try again later.');
+            uploadButton.fadeIn();
+            });;
+    });
+</script>
+{% endblock %}

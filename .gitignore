@@ -1,4 +1,8 @@
-*.pyc
-sqlite3.db
-plan.txt
-
+*.py[co]
+*.sw[po]
+*.bak
+*.orig
+*~
+.project
+.pydevproject
+*.DS_Store

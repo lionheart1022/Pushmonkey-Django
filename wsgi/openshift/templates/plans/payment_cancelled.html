@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Payment Cancelled - {% endblock %}
+
+{% block content %}
+<div class="header-background inner-background">
+  <div class="site-inner">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+    {% include 'navigation-sticky.html' %}
+    <div class="fullheader-banner inner-banner text-left">
+      <div class="container">
+        <h3>Payment cancelled</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-inner" id="payment-overview">
+  <div id="content" class="website-content">
+    <div class="container">
+
+      <div class="vc_row wpb_row vc_inner vc_row-fluid startnow_monkeybox">
+
+        <div class="colortheme-blue wpb_column vc_column_container vc_col-sm-6 vc_col-sm-offset-3">
+
+          <div class="vc_column-inner text-center">
+            <div class="wpb_wrapper">
+              <h1>Ooops!</h1>
+              <p>
+                Seems like either something went wrong with finalizing the payment of you canceled it.
+                Sorry to hear that. 
+              </p>
+              <p>
+                Is there anything we can improve? Please let us know at <a href="mailto:hello@getpushmonkey.com">hello@getpushmonkey.com</a>. 
+                It would mean a lot to us!
+              </p>
+              <a class="btn btn-success" href="{% url dashboard %}">Back to Dashboard</a>
+            </div>          
+          </div>
+
+        </div><!-- .col -->
+      </div><!-- .row -->
+
+    </div>
+  </div>
+</div>
+{% endblock %}

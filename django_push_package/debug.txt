@@ -1,6 +1,0 @@
-from clients.models import ClientProfile, ProfileImage
-from pushmonkey.models import PushPackage
-profile = ClientProfile.objects.filter(account_key = "K17W5HDVUJ3ZOP4RI").first()
-profile_image = ProfileImage.objects.get(profile = profile)
-package = PushPackage.objects.filter(identifier = "K17W5HDVUJ3ZOP4RI").first()
-package.generate_zip(profile.website_name, profile.website, profile_image.image128_2x.path, profile_image.image128.path, profile_image.image32_2x.path, profile_image.image32.path, profile_image.image16_2x.path, profile_image.image16.path)

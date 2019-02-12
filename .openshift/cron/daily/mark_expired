@@ -1,0 +1,4 @@
+#!/bin/bash
+i=$(date "+%Y-%m-%d")
+python $OPENSHIFT_REPO_DIR/wsgi/openshift/manage.py mark_expired
+echo "Marked expired done at $i" >> $OPENSHIFT_LOG_DIR/mark_expired.log

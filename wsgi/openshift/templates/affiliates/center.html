@@ -1,0 +1,312 @@
+{% extends "base.html" %}
+
+{% block title %}Affiliate Center - {% endblock %}
+
+{% block content %}
+
+<div class="header-background inner-background">
+  <div class="site-inner">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+    {% include 'navigation-sticky.html' %}
+    <div class="fullheader-banner inner-banner text-left">
+      <div class="container">
+        <h3>Affiliate</h3>
+        <h4></h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-inner">
+    <div id="content" class="website-content">
+<div class="container" id="affiliate"> 
+  <!-- .row -->
+  
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h2>Welcome back {{ user.first_name }}. This is your Affiliate Center </h2>
+      <p>You are now part of the Push Monkey Affiliate Program. Hip-hip-hurray!<br>
+        Here is your affiliate link. Share it with clients or websites which would benefit from using Push Monkey</p>
+    </div>
+    <div class="col-lg-12 text-center hey-title">
+        {% if af_link %}
+        <textarea class="form-control" onclick="this.setSelectionRange(0, this.value.length)" readonly>http://getpushmonkey.com/af/{{ af_link.token }}</textarea>
+        {% endif %}      
+    </div>
+    <!-- .col --> 
+  </div>
+  <div class="row">
+    <div class="col-sm-12 left-statics">
+      <h3>Stats</h3>
+      <div class="row">
+        <div class="col-sm-12">
+        <div class="overflow-auto full">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Plan Type</th>
+                <th>Billing Interval</th>
+                <th>Start Date</th>
+                <th>Comission</th>
+                <th>Paid Out</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for payment in affiliate_payments %}
+              <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td>{{ payment.plan.get_type_display }}</td>
+                  <td>{{ payment.plan.plan_length|capfirst }}</td>
+                  <td>{{ payment.plan.start_at }}</td>
+                  <td>${{ payment.sum_value }} ({{ payment.commision|floatformat:"0" }}%)</td>
+                  <td>{{ payment.payed_to_user|yesno:"yes,no" }}</td>
+              </tr>              
+              {% empty %}
+              <tr>
+                <td colspan="6" class="text-center">
+                  <h4>Oh, no! An empty list. How come?</h4>
+
+                    {% if af_link %}
+                    <p>
+                        Share your referral link with people who might love to use Push Monkey.
+                    </p>
+                    <div class="row">
+                        <div class="col-lg-4 col-lg-offset-4">
+                            <div class="form-container form-green">
+                                <textarea class="form-control" onclick="this.setSelectionRange(0, this.value.length)" readonly>http://getpushmonkey.com/af/{{ af_link.token }}</textarea>
+                            </div>
+                        </div><!-- .col- -->
+                    </div><!-- .row -->
+                    <div class="row">
+                        <div class="col-lg-2 col-lg-offset-3 text-right">
+                            <p>
+                                Share this link on:
+                            </p>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="addthis_sharing_toolbox"></div>
+                        </div>
+                    </div><!-- .row -->
+                    {% endif %}                  
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          </div>
+          <table class="table table-striped">
+            <tbody><tr>
+              <td class="text-right">Total received: ${{ total_received }}</td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong>Total to receive: ${{ total_to_receive }}</strong></td>
+            </tr>
+          </tbody></table>
+          <div class="row">
+            <div class="afilate-mesg text-right col-sm-12">
+              <p> Whenever you want, you can request a payout of the<br>
+                accumulated comisions. The minimum sum is $20.</p>
+              <a class="btn btn-default disabled" href="#">Almost there!</a> </div>
+            <div class="col-lg-12">
+              <ul class="nav nav-tabs" role="tablist">
+                <li class="active"><a href="#recommended" role="tab" data-toggle="tab">Recommended</a></li>
+                <li><a href="#wide" role="tab" data-toggle="tab">Wide</a></li>
+                <li><a href="#tall" role="tab" data-toggle="tab">Tall</a></li>
+                <li><a href="#small" role="tab" data-toggle="tab">Small/Mobile</a></li>
+              </ul>
+            </div>
+            <div class="tab-content col-sm-12">
+              <div class="tab-pane fade in active" id="recommended">
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-300-250-v8.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 300x250</em> <br>
+                </div>
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-300-250-v9.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 300x250</em> <br>
+                </div>
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-300-250-v5.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 300x250</em> <br>
+                </div>
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-300-250-v6.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 300x250</em> <br>
+                </div>
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-300-250-v7.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 300x250</em> <br>
+                </div>
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-300-250-v11.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 300x250</em> <br>
+                </div>
+              </div>
+              <!-- .tab-pane -->
+              
+              <div class="tab-pane fade " id="wide">
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-728-90-v1.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 728x90</em> <br>
+                </div>
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-728-90-v2.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 728x90</em> <br>
+                </div>
+              </div>
+              <!-- .tab-pane -->
+              
+              <div class="tab-pane fade " id="tall">
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-160-600-v1.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 160x600</em> <br>
+                </div>
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-160-600-v2.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 160x600</em> <br>
+                </div>
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-300-600-v1.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 300x600</em> <br>
+                </div>
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-300-600-v2.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 300x600</em> <br>
+                </div>
+              </div>
+              <!-- .tab-pane -->
+              
+              <div class="tab-pane fade " id="small">
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-320-50-v1.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 320x50</em> <br>
+                </div>
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-320-50-v2.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 320x50</em> <br>
+                </div>
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-125-125-v1.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 125x125</em> <br>
+                </div>
+                <div class="col-lg-3"> <img src="{{ STATIC_URL }}images/banner-125-125-v2.png" class="img-responsive"> </div>
+                <div class="col-lg-3"> <em>Banner size 125x125</em> <br>
+                </div>
+              </div>
+              <!-- .tab-pane --> 
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="affiliatesection-forth col-sm-12">
+      <div class="wpb_wrapper">
+        <div class="vc_row wpb_row vc_inner vc_row-fluid page-heading text-center">
+          <div class="wpb_text_column wpb_content_element  homepage-heading">
+            <div class="wpb_wrapper">
+              <h3>Program Details</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 program-fourbox">
+            <div class="row">
+              <div class="program-four col-sm-12">
+                <div class="wpb_single_image wpb_content_element vc_align_left   program-fourimg">
+                  <figure class="wpb_wrapper vc_figure">
+                    <div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_single_image-img " src="{{ STATIC_URL }}images/af-award.png" alt="af-award" title="af-award" width="104" height="104"></div>
+                  </figure>
+                </div>
+                <div class="wpb_text_column wpb_content_element  program-fourtext">
+                  <div class="wpb_wrapper">
+                    <p><strong>Commission rate</strong><br>
+                      25% or 40% commission on any qualified purchase from a new customer that you have referred.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="program-four col-sm-12">
+                <div class="wpb_single_image wpb_content_element vc_align_left   program-fourimg">
+                  <figure class="wpb_wrapper vc_figure">
+                    <div class="vc_single_image-wrapper   vc_box_border_grey"><img class="vc_single_image-img " src="{{ STATIC_URL }}images/af-report.png" alt="af-report" title="af-report" width="104" height="104"></div>
+                  </figure>
+                </div>
+                <div class="wpb_text_column wpb_content_element  program-fourtext">
+                  <div class="wpb_wrapper">
+                    <p><strong>Accurate Reporting</strong><br>
+                      How much you’ve earned, from what type of signups and sums.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 program-fourbox">
+            <div class="row">
+              <div class="program-four col-sm-12">
+                <div class="wpb_single_image wpb_content_element vc_align_left   program-fourimg">
+                  <figure class="wpb_wrapper vc_figure">
+                    <div class="vc_single_image-wrapper vc_box_border_grey"><img class="vc_single_image-img" src="{{ STATIC_URL }}images/af-controls-dark.png" alt="af-controls-dark" title="af-controls-dark" width="104" height="104"></div>
+                  </figure>
+                </div>
+                <div class="wpb_text_column wpb_content_element  program-fourtext">
+                  <div class="wpb_wrapper">
+                    <p><strong>Wide range of promo tools</strong><br>
+                      From links and banners to tweets and gif images, we have you covered so you can start earning right away.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="program-four col-sm-12">
+                <div class="wpb_single_image wpb_content_element vc_align_left   program-fourimg">
+                  <figure class="wpb_wrapper vc_figure">
+                    <div class="vc_single_image-wrapper vc_box_border_grey"><img class="vc_single_image-img " src="{{ STATIC_URL }}images/af-award.png" alt="af-award" title="af-award" width="104" height="104"></div>
+                  </figure>
+                </div>
+                <div class="wpb_text_column wpb_content_element  program-fourtext">
+                  <div class="wpb_wrapper">
+                    <p><strong>Regular Payouts</strong><br>
+                      Fast and easy transfers with regular payout dates, via PayPal.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- .row --> 
+  
+  <!-- .row --> 
+</div>
+</div>
+
+<!-- .website-content -->
+
+</div>
+{% endblock %}
+
+{% block closingjs %}
+{% if should_show_modal %}
+<div class="modal fade" id="affiliate-account-switch">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Before you start</h3>
+            </div>
+            <div class="modal-body">
+                <p>
+                    You are currently logged in with <strong>{{ user.email }}</strong>. 
+                    <br /> 
+                    Do you want to use this account for the Push Monkey Affiliate Program?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url logout %}" class="btn btn-default" data-dismiss="modal">Switch Account</a>
+                <a href="{% url affiliates_center %}?use_current=1" class="btn btn-primary">Yes, use <strong>{{ user.email }}</strong></a>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script type="text/javascript">
+$(function() {
+
+  $('div.modal').modal();  
+})
+</script>
+{% else %}
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript">
+var addthis_share = {
+    url: "http://getpushmonkey.com/af/{{ af_link.token }}",
+    title: "Oh, look: Push Monkey - Wordpress Desktop Push Notifications, direct engagement of your Mac readers @getpushmonkey"
+}
+</script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5433b75143c56884" async></script>
+{% endif %}
+{% endblock %}

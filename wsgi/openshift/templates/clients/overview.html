@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Overview - {% endblock %}
+
+{% block content %}
+<div class="header-background inner-background">
+  <div class="site-inner">
+    <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+    {% include 'navigation-sticky.html' %}
+
+    <div class="fullheader-banner inner-banner text-left">
+      <div class="container">
+
+        <h3>Sign up</h3>
+        <h4></h4>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<div class="site-inner">
+  <div id="content" class="website-content">
+    <div class="container" id="overview">
+      <!-- .row -->
+
+      <div class="row">
+        <div class="col-lg-12 text-center top-text-third">
+          <h2>Almost done</h2>
+          <p>To start sending Desktop Push Notifications, please select one of the options bellow:</p>
+          <a href="{% url register_thank_you profile_id=profile.id %}" class="btn btn-lg btn-success" data-toggle="tooltip" data-placement="right" title="" data-original-title="Fully Power Packed!">Start 30 Day FREE Trial</a>
+          <p>unlimited notifications, 30 days, <br>
+            no credit cards, no commitment</p>
+          </div>
+          <!-- .col --> 
+        </div>
+        <div class="row">
+          <div id="Pricing" data-vc-full-width="true" data-vc-full-width-init="true" class="text-center">
+
+            {% include 'home/pricing-table.html' %}
+
+          </div>
+          <!-- .row -->
+
+          <div class="row reg-steps">
+            <div class="col-lg-3 col-lg-offset-1 reg-step">
+              <div class="text-left step-number">
+                <p><strong>1.</strong> <br>
+                  Registration</p>
+                </div>
+                <!-- .col --> 
+              </div>
+              <!-- .col -->
+              <div class="col-lg-3 col-lg-offset-1 reg-step">
+                <div class="text-left step-number">
+                  <p><strong>2.</strong><br>
+                    Customizing </p>
+                  </div>
+                </div>
+                <!-- .col -->
+                <div class="col-lg-3 col-lg-offset-1 reg-step">
+                  <div class="text-left step-number active">
+                    <p><strong>3.</strong><br>
+                      Overview </p>
+                    </div>
+                  </div>
+                  <!-- .col --> 
+                </div>
+                <!-- .row --> 
+              </div>
+            </div>
+
+            <!-- .website-content -->
+
+          </div>        
+          {% endblock %}

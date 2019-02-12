@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Image Upload - {% endblock %}
+
+{% block content %}
+
+{% include 'navigation-standard.html' %}
+
+<div class="container" id="icon-upload">
+
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-1">
+            <h1> Icon Upload </h1>
+            <p>
+                Before we get started, please upload an icon that you wish to appear together with each notification. Usually your site icon.
+                Ideally square. And colorful. And recognizable...
+                <br /> <br /> 
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-1">
+            <div class="form-container top-spacing">
+                {% if form.non_field_errors %}
+                <div class="non-field-errors">
+                    {{ form.non_field_errors }}
+                </div>
+                {% endif %}
+                {% if success %}
+                <div class="bg-success">
+                    <p>
+                        Image uploaded. Looking good!
+                    </p>
+                    <br /> 
+                    <a href="{% url dashboard %}" class="btn btn-success">Continue</a>
+                </div>
+                {% endif %}
+                <form method="post" enctype="multipart/form-data">
+                    <div class="top">
+                        {{ form.image }}
+                        {{ form.image.errors }}
+                        <input type="submit" name="submit" class="btn btn-lg btn-success" value="Upload" />
+                    </div>
+                    {% csrf_token %}
+                </form>
+                <div class="bottom">
+                    <p>
+                        Upload the logo for your website. It will appear inside the Push Notification received by your readers. 
+                        We will generate all the required sizes. <strong>Ideally, the image you upload is square.</strong>
+                    </p>
+                </div>
+            </div><!-- .form-container -->
+        </div><!-- .col - -->
+        <div class="col-lg-4 col-lg-offset-2">
+            <div class="notification-placeholder">
+                <h3 class="text-center">Preview</h3>
+
+                <img src="{{ STATIC_URL }}img/notification-image-upload-placeholder.png" />
+                <div class="notification">
+                    {% if profile_image %}
+                    <img src="{{ profile_image.image.url }}" class="icon"/>
+                    {% else %}
+                    <img src="{{ STATIC_URL }}web.com.rhcloud.wptest-pushmonkey/pushPackage/iconset/icon_32x32.png" class="icon"/>
+                    {% endif %}
+                    <p>
+                        <strong>Something cool will launch</strong><br /> 
+                        From today onward, readers can stay up-to-date with news in the most direct ...
+                    </p>
+                </div>
+            </div>
+        </div><!-- .col - -->
+    </div><!-- .row -->
+
+</div>
+{% endblock %}

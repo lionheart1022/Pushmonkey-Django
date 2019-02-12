@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Missing Page - 404 - {% endblock %}
+
+{% block content %}
+<div id="navigation" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="/static/img/push-monkey-logo-small.png"></a>
+        </div> <!-- .navbar-header -->
+        <div class="navbar-collapse collapse">
+            <div class="navbar-extra">
+                {% if user.is_authenticated %}
+                <span class="username">Hey {{ user.first_name }}!</span>
+                <a href="{% url dashboard %}" class="btn btn-default">Dashboard</a>
+                <a href="{% url logout %}" class="btn btn-default">Sign Out</a>
+                {% else %}
+                <a href="{% url login %}" class="btn btn-default">Sign In</a>
+                <a href="{% url register %}" class="btn btn-success">Sign Up</a>
+                {% endif %}
+            </div>
+        </div><!-- .nav-collapse -->
+    </div><!-- .container -->
+</div><!-- #navigation -->
+
+<div id="trial_thank_you">
+    <div class="header-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <h1>404. Missing page. Ooops!</h1>
+                    <p>
+                        How did you get here? Well, this page doesn't exist. 
+                    </p>
+                    <p>
+                        Is there anything we can improve? Please let us know at <a href="mailto:hello@getpushmonkey.com">hello@getpushmonkey.com</a>. 
+                        It would mean a lot to us!
+                    </p>
+                    <h2>
+                        Cheers!
+                    </h2>
+                </div><!-- .col- -->
+                <div class="col-lg-6 col-lg-offset-1">
+                    <img class="img-responsive" src="{{ STATIC_URL }}img/sad.jpg" alt="">
+                </div><!-- .col -->
+            </div><!-- .row -->
+            <div class="row">
+                <div class="col-lg-5 text-center">
+                    <a class="btn btn-success" href="/">Go Back Home</a>
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .header-wrap -->
+</div><!-- #trial_thank_you -->
+{% endblock %}
